@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Animal Study Design Planner | PharmaCalc</title>
+<style>
+:root{--navy:#15334c;--blue:#1769aa;--teal:#087f8c;--bg:#f4f7fb;--ink:#172536;--muted:#5d6b7a;--line:#dbe3ec;--white:#fff;--amber:#fff5dc;--green:#e7f6ee;--red:#fff0ef}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(120deg,#102c46,#1769aa);color:#fff;padding:30px 20px}header .wrap,main,.foot{max-width:1240px;margin:auto}h1{font-size:clamp(27px,4vw,39px);line-height:1.15;margin:0 0 8px}header p{margin:0;max-width:900px;color:#e4eff8}.pill{display:inline-block;border:1px solid #ffffff70;border-radius:99px;padding:4px 10px;font-size:12px;margin-bottom:12px}
+main{padding:22px 16px 34px}.alert{border:1px solid #efd28a;background:var(--amber);padding:14px 16px;border-radius:12px;margin-bottom:18px}.layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:18px;align-items:start}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:19px;box-shadow:0 4px 16px #17334a0a;margin-bottom:18px}
+h2{font-size:20px;color:var(--navy);margin:0 0 14px}h3{font-size:16px;color:var(--navy);margin:18px 0 8px}
+label{font-size:13px;font-weight:700;display:block;margin-bottom:5px}input,select,textarea{width:100%;padding:10px 11px;border:1px solid #cbd6e2;border-radius:9px;background:#fff;color:var(--ink);font:inherit}textarea{min-height:82px;resize:vertical}input:focus,select:focus,textarea:focus{outline:3px solid #1769aa25;border-color:var(--blue)}.field{margin-bottom:13px}.hint{font-size:12px;color:var(--muted);display:block;margin-top:4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.hidden{display:none!important}
+button{border:0;border-radius:10px;padding:10px 15px;font:inherit;font-weight:750;cursor:pointer}.primary{background:var(--blue);color:white}.secondary{background:#eaf1f8;color:var(--navy)}.danger{background:#fff0ef;color:#923b35}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:8px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{background:#e7edf4;color:#24435d}.tab.active{background:var(--navy);color:white}
+.badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.03em;background:#eaf1f8;color:#254d70;padding:3px 8px;border-radius:6px}
+.check{display:flex;align-items:flex-start;gap:9px;font-weight:500;margin:8px 0}.check input{width:auto;margin-top:5px}
+.section{border-top:1px solid var(--line);padding-top:13px;margin-top:13px}.callout{padding:12px;border-radius:10px;background:#eef6fc;border:1px solid #cfe3f4}.warning{padding:12px;border-radius:10px;background:var(--amber);border:1px solid #efd28a}.good{padding:12px;border-radius:10px;background:var(--green);border:1px solid #b9e4ca}
+.resultbox{border:1px solid #c7e3f7;background:#edf7ff;border-radius:13px;padding:15px}.resultbox strong{font-size:19px;color:#075b93}.muted{color:var(--muted)}.small{font-size:12px}.formula{font:13px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;background:#f6f8fb;border:1px solid var(--line);padding:11px;border-radius:9px;overflow-wrap:anywhere}
+ol,ul{padding-left:21px}li{margin:5px 0}details{border-top:1px solid var(--line);padding:11px 0}summary{font-weight:750;cursor:pointer}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}th{background:#f1f5f9}
+footer{background:#102c46;color:#dce7f0;padding:22px 16px;font-size:12px}footer p{margin:5px 0}
+@media(max-width:850px){.layout{grid-template-columns:1fr}}@media(max-width:520px){.grid2,.grid3{grid-template-columns:1fr}.card{padding:15px}header{padding:24px 16px}}
+@media print{body{background:#fff}header{background:#fff;color:#000;padding:10px 0}header p{color:#333}.tabs,.actions{display:none}.layout{grid-template-columns:1fr 1fr}.card{box-shadow:none;break-inside:avoid}main{padding:8px 0}}
+</style></head>
+<body>
+<header><div class="wrap"><span class="pill">PHARMACALC • PRECLINICAL RESEARCH PLANNER</span><h1>Animal Study Design Planner</h1><p>Structured planning for acute and chronic preclinical studies: scientific question, groups, dosing schedule, observations, endpoints, sample-size rationale, humane endpoints, randomization, and reporting checklist.</p></div></header>
+<main>
+<div class="alert"><strong>Research and ethics notice:</strong> This tool helps organize a protocol; it does not authorize animal experiments or replace expert review. Follow the current applicable CPCSEA rules, institutional IAEC approval, veterinarian guidance, and institutional SOPs. Do not begin procedures, dosing, or animal procurement before required approvals. Use the 3Rs—Replacement, Reduction, Refinement—and establish humane endpoints with a qualified veterinarian/IAEC.</div>
+<div class="tabs" role="tablist" aria-label="Study type">
+<button class="tab active" id="acuteTab" role="tab" aria-selected="true">Acute study planner</button>
+<button class="tab" id="chronicTab" role="tab" aria-selected="false">Chronic study planner</button>
+<button class="tab" id="sharedTab" role="tab" aria-selected="false">Common protocol sections</button>
+</div>
+<div class="layout">
+<section>
+<div class="card" id="studyTypeCard">
+<h2>1. Study overview</h2>
+<div class="grid2">
+<div class="field"><label for="title">Protocol / study title</label><input id="title" value="Preclinical evaluation of test intervention" maxlength="180"></div>
+<div class="field"><label for="studyType">Study category</label><select id="studyType"><option value="acute">Acute study</option><option value="chronic">Chronic study</option></select></div>
+<div class="field"><label for="objective">Primary objective</label><select id="objective"><option>Acute toxicity / tolerability</option><option>Pharmacological efficacy</option><option>Dose-response assessment</option><option>Repeated-dose toxicity</option><option>Mechanistic / biomarker study</option><option>Other scientifically justified objective</option></select></div>
+<div class="field"><label for="domain">Research area</label><select id="domain"><option>Pharmacology</option><option>Toxicology</option><option>Formulation / drug delivery</option><option>Pharmacokinetics</option><option>Medicinal / pharmaceutical chemistry</option><option>Other</option></select></div>
+</div>
+<div class="grid2">
+<div class="field"><label for="species">Species / strain</label><input id="species" placeholder="e.g., species and strain to be justified"></div>
+<div class="field"><label for="sex">Sex selection</label><select id="sex"><option>Both sexes, where scientifically justified</option><option>Female only — justify in protocol</option><option>Male only — justify in protocol</option><option>Other / study-specific justification</option></select></div>
+<div class="field"><label for="age">Age / life stage</label><input id="age" placeholder="Specify range and rationale"></div>
+<div class="field"><label for="weight">Weight range</label><input id="weight" placeholder="Specify range and rationale"></div>
+</div>
+<div class="field"><label for="hypothesis">Scientific hypothesis and rationale</label><textarea id="hypothesis" placeholder="State the knowledge gap, hypothesis, expected direction of effect, and evidence supporting the model."></textarea></div>
+<div class="field"><label for="primary">Primary outcome (one prespecified main endpoint)</label><input id="primary" placeholder="e.g., validated measure at a prespecified time point"></div>
+<div class="field"><label for="secondary">Secondary outcomes</label><textarea id="secondary" placeholder="List secondary outcomes and identify which are exploratory."></textarea></div>
+</div>
+<div class="card" id="acutePanel">
+<h2>2A. Acute study planning</h2>
+<p class="muted">Use this section for single-exposure or short observation-window studies, acute pharmacology, tolerability, or acute toxicity protocols. Exact procedures and dose levels must come from the approved protocol, relevant guideline, and veterinary/IAEC review.</p>
+<div class="grid2">
+<div class="field"><label for="acutePurpose">Acute study subtype</label><select id="acutePurpose"><option>Acute pharmacological efficacy</option><option>Single-dose tolerability</option><option>Acute toxicity assessment</option><option>Acute mechanism / biomarker response</option><option>Other</option></select></div>
+<div class="field"><label for="exposure">Exposure schedule (describe approved plan)</label><input id="exposure" placeholder="e.g., single administration; cite protocol/SOP"></div>
+<div class="field"><label for="observation">Observation window</label><input id="observation" placeholder="State duration and scientific rationale"></div>
+<div class="field"><label for="frequency">Observation frequency</label><input id="frequency" placeholder="Define time points in approved protocol"></div>
+</div>
+<div class="field"><label for="acuteSigns">Clinical observations / safety parameters</label><textarea id="acuteSigns" placeholder="Predefine observations, scoring system, observer training, recording frequency, and escalation steps."></textarea></div>
+<div class="field"><label for="acuteSampling">Sample collection / terminal assessments (if applicable)</label><textarea id="acuteSampling" placeholder="Specify sample type, timing rationale, endpoints, and refinement considerations; follow approved SOPs."></textarea></div>
+<div class="callout"><strong>Acute-design checkpoints</strong><ul><li>Define whether the primary purpose is efficacy, tolerability, or toxicity; these are not interchangeable.</li><li>Use the applicable current guideline and approved protocol for dose selection and observation requirements.</li><li>Predefine humane endpoints and emergency veterinary response before study start.</li><li>Specify how adverse events, unexpected deaths, missing observations, and protocol deviations will be handled.</li></ul></div>
+</div>
+<div class="card hidden" id="chronicPanel">
+<h2>2B. Chronic / repeated-dose study planning</h2>
+<p class="muted">Use this section for repeated exposure or long-duration efficacy/toxicity studies. The study duration, schedule, and monitoring intensity must be scientifically justified and approved; this planner intentionally does not prescribe dose levels or procedures.</p>
+<div class="grid2">
+<div class="field"><label for="chronicPurpose">Chronic study subtype</label><select id="chronicPurpose"><option>Repeated-dose toxicity / tolerability</option><option>Long-term pharmacological efficacy</option><option>Disease model / progression</option><option>Chronic biomarker / mechanism</option><option>Other</option></select></div>
+<div class="field"><label for="duration">Planned duration</label><input id="duration" placeholder="Duration and rationale from study objective/guideline"></div>
+<div class="field"><label for="schedule">Administration / exposure schedule</label><input id="schedule" placeholder="Reference approved protocol or SOP"></div>
+<div class="field"><label for="recovery">Recovery / follow-up phase</label><select id="recovery"><option>Not planned — justify</option><option>Planned — rationale and duration to be specified</option><option>Under consideration</option></select></div>
+<div class="field"><label for="monitoring">Routine monitoring plan</label><input id="monitoring" placeholder="Define frequency, responsible staff, and records"></div>
+<div class="field"><label for="bodyweight">Body weight / intake tracking</label><input id="bodyweight" placeholder="Specify measures and schedule in approved protocol"></div>
+</div>
+<div class="field"><label for="chronicSigns">Longitudinal clinical observations and welfare scoring</label><textarea id="chronicSigns" placeholder="Define baseline, frequency, scoring thresholds, escalation, and who reviews observations."></textarea></div>
+<div class="field"><label for="labs">Laboratory / functional / pathology endpoints (as applicable)</label><textarea id="labs" placeholder="List scientifically justified endpoints, collection time points, methods, and planned interpretation."></textarea></div>
+<div class="callout"><strong>Chronic-design checkpoints</strong><ul><li>Plan longitudinal analysis and account for within-animal correlation and repeated measurements.</li><li>Define cumulative burden, handling habituation, monitoring responsibility, and veterinary review triggers.</li><li>Predefine interim review criteria, humane endpoints, recovery assessments, and disposition of animals.</li><li>Account for cage/litter clustering, sex, batch effects, and possible multiplicity in the analysis plan.</li></ul></div>
+</div>
+<div class="card" id="groupsCard">
+<h2>3. Experimental groups and allocation</h2>
+<p class="muted">List only groups scientifically necessary to answer the hypothesis. Actual doses, routes, frequency, and procedures must be defined and approved separately.</p>
+<div class="field"><label for="groupRationale">Why is each group needed?</label><textarea id="groupRationale" placeholder="Explain control choice, intervention comparison, dose groups if relevant, and why no group can be removed."></textarea></div>
+<table id="groupTable"><thead><tr><th>Group</th><th>Purpose</th><th>Intervention / code</th><th>Animals planned</th><th>Rationale / notes</th><th></th></tr></thead><tbody></tbody></table>
+<div class="actions"><button class="secondary" id="addGroup">+ Add group</button><button class="secondary" id="suggestGroups">Insert example group structure</button></div>
+<p class="small muted">The example structure is only a blank planning scaffold, not a recommendation for a specific study or animal count.</p>
+<div class="grid2 section">
+<div class="field"><label for="sampleMethod">Sample-size justification source</label><select id="sampleMethod"><option>Formal statistical calculation</option><option>Published comparable study / guideline</option><option>Pilot data with justification</option><option>Other — explain</option></select></div>
+<div class="field"><label for="powerNote">Power / sample-size notes</label><input id="powerNote" placeholder="Primary endpoint, effect, variance, alpha, power, software/version"></div>
+</div>
+<div class="field"><label for="allocationPlan">Randomization and allocation concealment</label><textarea id="allocationPlan" placeholder="Describe sequence generation, blocking/stratification if needed, who assigns animals, and how allocation is concealed."></textarea></div>
+<div class="field"><label for="blinding">Blinding plan</label><textarea id="blinding" placeholder="Who is blinded at treatment, assessment, analysis, and code-breaking? If not feasible, explain safeguards."></textarea></div>
+</div>
+<div class="card" id="methodsCard">
+<h2>4. Methods, bias control, and analysis</h2>
+<div class="grid2">
+<div class="field"><label for="inclusion">Inclusion criteria</label><textarea id="inclusion" placeholder="Predefined animal/model and baseline criteria."></textarea></div>
+<div class="field"><label for="exclusion">Exclusion / humane removal criteria</label><textarea id="exclusion" placeholder="Define before unblinding; distinguish humane removal from data exclusion."></textarea></div>
+<div class="field"><label for="housing">Housing, acclimatization, and environment</label><textarea id="housing" placeholder="Institutional SOPs, enrichment, social housing, acclimatization, environmental factors."></textarea></div>
+<div class="field"><label for="handling">Handling and refinement</label><textarea id="handling" placeholder="Habituation, trained personnel, refinement measures, minimizing stress and pain."></textarea></div>
+</div>
+<div class="field"><label for="analysis">Statistical analysis plan</label><textarea id="analysis" placeholder="Primary model/test, assumptions, repeated measures, multiple comparisons, missing data, effect sizes, confidence intervals, software, and significance threshold."></textarea></div>
+<div class="field"><label for="deviations">Protocol deviations and adverse events</label><textarea id="deviations" placeholder="Documenting, reporting, and decision-making procedure."></textarea></div>
+</div>
+<div class="card" id="ethicsCard">
+<h2>5. Ethics, welfare, and approvals</h2>
+<p class="muted">Complete with the veterinarian, animal facility, and IAEC. This checklist is a prompt for discussion, not a substitute for the current official forms or SOPs.</p>
+<div id="ethicsChecks">
+<label class="check"><input type="checkbox" data-check="replacement"> Replacement alternatives reviewed and documented</label>
+<label class="check"><input type="checkbox" data-check="reduction"> Reduction: sample size and group structure justified</label>
+<label class="check"><input type="checkbox" data-check="refinement"> Refinement: pain/distress minimization and humane endpoints planned</label>
+<label class="check"><input type="checkbox" data-check="veterinarian"> Veterinary oversight and emergency contacts established</label>
+<label class="check"><input type="checkbox" data-check="training"> Personnel training and competency documented</label>
+<label class="check"><input type="checkbox" data-check="approval"> Applicable IAEC / CPCSEA approvals and permissions confirmed before start</label>
+<label class="check"><input type="checkbox" data-check="endpoints"> Humane endpoints and monitoring thresholds approved and communicated</label>
+<label class="check"><input type="checkbox" data-check="disposition"> Post-study animal disposition / follow-up defined in approved protocol</label>
+</div>
+<div class="field section"><label for="humane">Study-specific humane endpoints and action thresholds</label><textarea id="humane" placeholder="Define observable, measurable criteria and immediate actions with the veterinarian/IAEC. Do not leave thresholds implicit."></textarea></div>
+<div class="field"><label for="approvalRef">IAEC protocol / approval reference (if assigned)</label><input id="approvalRef" placeholder="Reference number / status; do not imply approval if pending"></div>
+<div class="warning"><strong>Stop-work principle:</strong> If an animal reaches a humane endpoint or shows unexpected distress, follow the approved veterinary response and humane-endpoint procedure immediately. Do not wait for data collection or calculator output.</div>
+</div>
+</section>
+<aside>
+<div class="card">
+<h2>Study design summary</h2>
+<div class="resultbox"><span class="badge">LIVE SUMMARY</span><p><strong id="sumType">Acute study</strong></p><div id="sumTitle">Preclinical evaluation of test intervention</div><hr style="border:0;border-top:1px solid #c7e3f7;margin:12px 0"><div class="grid2"><div><span class="small muted">Groups listed</span><br><strong id="sumGroups">0</strong></div><div><span class="small muted">Planned animals</span><br><strong id="sumAnimals">0</strong></div></div></div>
+<h3>Protocol completeness</h3><div class="resultbox"><strong id="complete">0%</strong><div class="small muted">Based on core fields and welfare checklist; not a scientific or ethical approval score.</div><div style="height:8px;background:#dce9f4;border-radius:99px;overflow:hidden;margin-top:9px"><div id="bar" style="height:100%;width:0%;background:#087f8c"></div></div><ul id="missing"></ul></div>
+<div class="actions"><button class="primary" id="export">Export protocol draft (.txt)</button><button class="secondary" id="print">Print / Save PDF</button><button class="secondary" id="save">Save draft in this browser</button><button class="secondary" id="load">Load saved draft</button></div>
+<p class="small muted">Browser save stays on this device/browser only. Export a report to keep a separate copy. Do not enter confidential or identifying data.</p>
+</div>
+<div class="card">
+<h2>Suggested workflow</h2>
+<ol><li>State the hypothesis and primary outcome.</li><li>Choose the minimum design that answers the question.</li><li>Justify animal numbers statistically or with documented evidence.</li><li>Define allocation, blinding, inclusion/exclusion, and analysis before data collection.</li><li>Review welfare, humane endpoints, and procedures with qualified staff.</li><li>Submit the protocol for applicable institutional and regulatory review.</li><li>Report transparently using ARRIVE guidance.</li></ol>
+</div>
+<div class="card">
+<h2>Design guidance</h2>
+<details open><summary>Acute studies</summary><p>Emphasize a defined exposure and observation window, time-anchored endpoints, observation frequency, safety escalation, and handling of unexpected outcomes. The applicable study-specific guideline determines required details.</p></details>
+<details><summary>Chronic studies</summary><p>Emphasize repeated exposure, longitudinal measures, welfare monitoring over time, recovery/follow-up where justified, cumulative burden, repeated-measures statistics, and preplanned interim decisions.</p></details>
+<details><summary>ARRIVE 2.0 reporting</summary><p>Consider study design, sample-size rationale, inclusion/exclusion criteria, randomization, blinding, outcome measures, statistical methods, animal details, procedures, results, and protocol registration where applicable.</p></details>
+<details><summary>India-specific oversight</summary><p>Confirm current CPCSEA rules, institutional IAEC procedures, facility permissions, and the relevant official guideline for the planned study type. This app does not verify the current regulatory version.</p></details>
+</div>
+</aside>
+</div>
+<div class="card"><h2>Reference points for protocol development</h2><ul><li><strong>ARRIVE Guidelines 2.0:</strong> reporting guidance for animal research; use the current official checklist.</li><li><strong>NC3Rs Experimental Design Assistant:</strong> supports structured experimental design and bias-control planning.</li><li><strong>Applicable CPCSEA / IAEC requirements:</strong> use current official documents and institution-specific SOPs for India.</li></ul><p class="small muted">This planner does not calculate doses, prescribe animal procedures, or determine regulatory compliance. Review all study-specific details with qualified experts.</p></div>
+</main>
+<footer><div class="foot"><p><strong>PharmaCalc • Animal Study Design Planner</strong></p><p>Designed and Created by Dr. Babaraj Udugade and Mrs. Swati Udugade</p><p>Copyright © Maharashtra Academy of Skills and Knowledge • Registered under MSME</p><p>Educational research-planning tool only. Not an approval, protocol authorization, veterinary instruction, or substitute for qualified statistical and ethical review.</p></div></footer>
+<script>
+const $=id=>document.getElementById(id);
+const textIds=['title','studyType','objective','domain','species','sex','age','weight','hypothesis','primary','secondary','acutePurpose','exposure','observation','frequency','acuteSigns','acuteSampling','chronicPurpose','duration','schedule','recovery','monitoring','bodyweight','chronicSigns','labs','groupRationale','sampleMethod','powerNote','allocationPlan','blinding','inclusion','exclusion','housing','handling','analysis','deviations','humane','approvalRef','unit'];
+let groupCount=0;
+function addGroup(data={}){groupCount++;const tr=document.createElement('tr');tr.innerHTML=`<td>${groupCount}</td><td><input aria-label="Group ${groupCount} purpose" value="${esc(data.purpose||'')}" placeholder="e.g., control"></td><td><input aria-label="Group ${groupCount} intervention" value="${esc(data.intervention||'')}" placeholder="Approved intervention code"></td><td><input aria-label="Group ${groupCount} animals" type="number" min="0" step="1" value="${esc(data.animals??'')}" placeholder="n"></td><td><input aria-label="Group ${groupCount} notes" value="${esc(data.notes||'')}" placeholder="Rationale / notes"></td><td><button type="button" class="danger" aria-label="Remove group ${groupCount}">×</button></td>`;tr.querySelector('button').addEventListener('click',()=>{tr.remove();renumber();update()});tr.querySelectorAll('input').forEach(i=>i.addEventListener('input',update));$('groupTable').querySelector('tbody').appendChild(tr);update()}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renumber(){[...$('groupTable').querySelectorAll('tbody tr')].forEach((tr,i)=>tr.firstElementChild.textContent=i+1);groupCount=$('groupTable').querySelectorAll('tbody tr').length}
+function groupData(){return [...$('groupTable').querySelectorAll('tbody tr')].map(tr=>{const a=tr.querySelectorAll('input');return {purpose:a[0].value,intervention:a[1].value,animals:a[2].value,notes:a[3].value}})}
+function setType(type){$('studyType').value=type;$('acutePanel').classList.toggle('hidden',type!=='acute');$('chronicPanel').classList.toggle('hidden',type!=='chronic');$('acuteTab').classList.toggle('active',type==='acute');$('chronicTab').classList.toggle('active',type==='chronic');$('acuteTab').setAttribute('aria-selected',type==='acute');$('chronicTab').setAttribute('aria-selected',type==='chronic');$('sumType').textContent=type==='acute'?'Acute study':'Chronic / repeated-dose study';update()}
+$('acuteTab').addEventListener('click',()=>setType('acute'));$('chronicTab').addEventListener('click',()=>setType('chronic'));$('sharedTab').addEventListener('click',()=>{document.querySelectorAll('.card').forEach(c=>c.classList.remove('hidden'));$('acutePanel').classList.remove('hidden');$('chronicPanel').classList.remove('hidden');$('acuteTab').classList.remove('active');$('chronicTab').classList.remove('active');$('sharedTab').classList.add('active');$('sumType').textContent='Common protocol sections';});
+$('studyType').addEventListener('change',e=>setType(e.target.value));
+$('addGroup').addEventListener('click',()=>addGroup());
+$('suggestGroups').addEventListener('click',()=>{if(groupData().length)return;if($('studyType').value==='acute'){addGroup({purpose:'Control / comparator',intervention:'As approved',notes:'Justify control choice'});addGroup({purpose:'Test condition',intervention:'As approved',notes:'Specify rationale in protocol'})}else{addGroup({purpose:'Control / comparator',intervention:'As approved',notes:'Justify control choice'});addGroup({purpose:'Test condition',intervention:'As approved',notes:'Specify rationale in protocol'})}});
+function update(){ $('sumTitle').textContent=$('title').value||'Untitled study';const gs=groupData();$('sumGroups').textContent=gs.length;$('sumAnimals').textContent=gs.reduce((s,g)=>s+(Number(g.animals)||0),0);
+ const core=[['Protocol title',$('title').value],['Scientific rationale',$('hypothesis').value],['Primary outcome',$('primary').value],['Species / strain',$('species').value],['Group structure',gs.length>=2?'yes':''],['Sample-size rationale',$('powerNote').value],['Randomization plan',$('allocationPlan').value],['Blinding plan',$('blinding').value],['Analysis plan',$('analysis').value],['Humane endpoints',$('humane').value]];
+ const checks=[...document.querySelectorAll('[data-check]')];const completed=core.filter(x=>String(x[1]).trim()).length+checks.filter(c=>c.checked).length;const pct=Math.round(completed/(core.length+checks.length)*100);$('complete').textContent=pct+'%';$('bar').style.width=pct+'%';const missing=core.filter(x=>!String(x[1]).trim()).map(x=>x[0]);checks.filter(c=>!c.checked).forEach(c=>missing.push(c.parentElement.textContent.trim()));$('missing').innerHTML=missing.length?missing.slice(0,7).map(x=>`<li>${esc(x)}</li>`).join(''):'<li>Core fields and checklist completed. Expert review is still required.</li>'}
+function report(){const lines=[];lines.push('ANIMAL STUDY DESIGN PLANNER — DRAFT');lines.push('Generated: '+new Date().toLocaleString());lines.push('');lines.push('DISCLAIMER: Draft only. Not an approval or procedural instruction. Confirm current IAEC/CPCSEA requirements and review with qualified experts.');lines.push('');
+for(const id of textIds){const el=$(id);if(el)lines.push(el.previousElementSibling?.textContent?.trim()+' : '+(el.value||'Not specified'))}
+lines.push('');lines.push('EXPERIMENTAL GROUPS');groupData().forEach((g,i)=>lines.push(`${i+1}. Purpose: ${g.purpose||'Not specified'} | Intervention/code: ${g.intervention||'Not specified'} | Planned animals: ${g.animals||'Not specified'} | Notes: ${g.notes||'Not specified'}`));
+lines.push('');lines.push('ETHICS / WELFARE CHECKLIST');document.querySelectorAll('[data-check]').forEach(c=>lines.push((c.checked?'[x] ':'[ ] ')+c.parentElement.textContent.trim()));
+lines.push('');lines.push('Designed and Created by Dr. Babaraj Udugade and Mrs. Swati Udugade');lines.push('Copyright © Maharashtra Academy of Skills and Knowledge');lines.push('Registered under MSME');return lines.join('\n')}
+$('export').addEventListener('click',()=>{const blob=new Blob([report()],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Animal_Study_Design_Draft.txt';a.click();URL.revokeObjectURL(url)});
+$('print').addEventListener('click',()=>window.print());
+function snapshot(){const vals={};textIds.forEach(id=>{if($(id))vals[id]=$(id).value});vals.groups=groupData();vals.checks={};document.querySelectorAll('[data-check]').forEach(c=>vals.checks[c.dataset.check]=c.checked);return vals}
+$('save').addEventListener('click',()=>{try{localStorage.setItem('pharmacalcAnimalStudyDraft',JSON.stringify(snapshot()));alert('Draft saved in this browser. Export a copy for backup.')}catch(e){alert('Could not save in this browser. Use Export protocol draft instead.')}});
+$('load').addEventListener('click',()=>{try{const s=JSON.parse(localStorage.getItem('pharmacalcAnimalStudyDraft')||'null');if(!s){alert('No saved draft found in this browser.');return}textIds.forEach(id=>{if($(id)&&s[id]!==undefined)$(id).value=s[id]});$('groupTable').querySelector('tbody').innerHTML='';groupCount=0;(s.groups||[]).forEach(g=>addGroup(g));document.querySelectorAll('[data-check]').forEach(c=>c.checked=!!s.checks?.[c.dataset.check]);setType($('studyType').value);update();alert('Saved draft loaded.')}catch(e){alert('Unable to load saved draft.')}})
+document.querySelectorAll('input,select,textarea').forEach(el=>el.addEventListener('input',update));document.querySelectorAll('[data-check]').forEach(el=>el.addEventListener('change',update));
+addGroup({purpose:'Control / comparator',intervention:'As approved',animals:'',notes:'Justify control choice'});addGroup({purpose:'Test condition',intervention:'As approved',animals:'',notes:'Specify rationale'});setType('acute');update();
+</script></body></html>
